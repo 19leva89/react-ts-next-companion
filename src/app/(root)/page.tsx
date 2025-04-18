@@ -41,8 +41,6 @@ const RootPage = async ({ searchParams }: Props) => {
 			{/* <Categories data={categories} /> */}
 
 			{/* <Companions data={data} /> */}
-
-			<UserButton />
 		</div>
 	)
 }

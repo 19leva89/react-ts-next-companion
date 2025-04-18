@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { PropsWithChildren } from 'react'
-import { ThemeProvider } from 'next-themes'
 import { ClerkProvider } from '@clerk/nextjs'
 
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui'
+import { ThemeProvider } from '@/components/shared/providers'
 
 import './globals.css'
 
