@@ -9,7 +9,7 @@
 export { MobileSidebar } from './mobile-sidebar'
 export { ModeToggle } from './mode-toggle'
 export { Navbar } from './navbar'
+export { SearchInput } from './search-input'
 export { Sidebar } from './sidebar'
-// export { ProModal } from './pro-modal'
 // export { SubscriptionButton } from './subscription-button'
 // export { UserAvatar } from './user-avatar'
