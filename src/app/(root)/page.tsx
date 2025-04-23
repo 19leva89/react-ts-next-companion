@@ -3,8 +3,6 @@
 // import Categories from '@/components/categories'
 // import SearchInput from '@/components/search-input'
 
-import { UserButton } from '@clerk/nextjs'
-
 interface Props {
 	searchParams: {
 		categoryId: string

@@ -18,7 +18,7 @@ export function ModeToggle() {
 
 	return (
 		<Button
-			variant="secondary"
+			variant="ghost"
 			size="icon"
 			onClick={toggleTheme}
 			className="flex items-center px-2 w-11 rounded-xl cursor-pointer transition-colors ease-in-out duration-300 group"
