@@ -5,7 +5,7 @@
 // export { Heading } from './heading'
 // export { LandingContent } from './landing-content'
 // export { LandingHero } from './landing-hero'
-// export { LandingNavbar } from './landing-navbar'
+export { Categories } from './categories'
 export { MobileSidebar } from './mobile-sidebar'
 export { ModeToggle } from './mode-toggle'
 export { Navbar } from './navbar'

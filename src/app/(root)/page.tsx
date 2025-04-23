@@ -1,8 +1,7 @@
-// import { prisma } from '@/lib/prisma'
 // import Companions from '@/components/companions'
-// import Categories from '@/components/categories'
 
-import { SearchInput } from '@/components/shared'
+import { prisma } from '@/lib/prisma'
+import { Categories, SearchInput } from '@/components/shared'
 
 interface Props {
 	searchParams: {
@@ -31,13 +30,13 @@ const RootPage = async ({ searchParams }: Props) => {
 	// 	},
 	// })
 
-	// const categories = await prisma.category.findMany()
+	const categories = await prisma.category.findMany()
 
 	return (
 		<div className="h-full p-4 space-y-2">
 			<SearchInput />
 
-			{/* <Categories data={categories} /> */}
+			<Categories data={categories} />
 
 			{/* <Companions data={data} /> */}
 		</div>
