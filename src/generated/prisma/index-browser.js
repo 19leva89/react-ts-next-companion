@@ -131,19 +131,19 @@ exports.Prisma.CompanionScalarFieldEnum = {
   description: 'description',
   instructions: 'instructions',
   seed: 'seed',
+  categoryId: 'categoryId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  categoryId: 'categoryId'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.MessageScalarFieldEnum = {
   id: 'id',
   role: 'role',
   content: 'content',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
   companionId: 'companionId',
-  userId: 'userId'
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.UserSubscriptionScalarFieldEnum = {

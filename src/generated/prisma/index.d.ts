@@ -2129,9 +2129,9 @@ export namespace Prisma {
     description: string | null
     instructions: string | null
     seed: string | null
+    categoryId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    categoryId: string | null
   }
 
   export type CompanionMaxAggregateOutputType = {
@@ -2143,9 +2143,9 @@ export namespace Prisma {
     description: string | null
     instructions: string | null
     seed: string | null
+    categoryId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    categoryId: string | null
   }
 
   export type CompanionCountAggregateOutputType = {
@@ -2157,9 +2157,9 @@ export namespace Prisma {
     description: number
     instructions: number
     seed: number
+    categoryId: number
     createdAt: number
     updatedAt: number
-    categoryId: number
     _all: number
   }
 
@@ -2173,9 +2173,9 @@ export namespace Prisma {
     description?: true
     instructions?: true
     seed?: true
+    categoryId?: true
     createdAt?: true
     updatedAt?: true
-    categoryId?: true
   }
 
   export type CompanionMaxAggregateInputType = {
@@ -2187,9 +2187,9 @@ export namespace Prisma {
     description?: true
     instructions?: true
     seed?: true
+    categoryId?: true
     createdAt?: true
     updatedAt?: true
-    categoryId?: true
   }
 
   export type CompanionCountAggregateInputType = {
@@ -2201,9 +2201,9 @@ export namespace Prisma {
     description?: true
     instructions?: true
     seed?: true
+    categoryId?: true
     createdAt?: true
     updatedAt?: true
-    categoryId?: true
     _all?: true
   }
 
@@ -2288,9 +2288,9 @@ export namespace Prisma {
     description: string
     instructions: string
     seed: string
+    categoryId: string
     createdAt: Date
     updatedAt: Date
-    categoryId: string
     _count: CompanionCountAggregateOutputType | null
     _min: CompanionMinAggregateOutputType | null
     _max: CompanionMaxAggregateOutputType | null
@@ -2319,9 +2319,9 @@ export namespace Prisma {
     description?: boolean
     instructions?: boolean
     seed?: boolean
+    categoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    categoryId?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     messages?: boolean | Companion$messagesArgs<ExtArgs>
     _count?: boolean | CompanionCountOutputTypeDefaultArgs<ExtArgs>
@@ -2338,12 +2338,12 @@ export namespace Prisma {
     description?: boolean
     instructions?: boolean
     seed?: boolean
+    categoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    categoryId?: boolean
   }
 
-  export type CompanionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "userName" | "src" | "name" | "description" | "instructions" | "seed" | "createdAt" | "updatedAt" | "categoryId", ExtArgs["result"]["companion"]>
+  export type CompanionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "userName" | "src" | "name" | "description" | "instructions" | "seed" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["companion"]>
   export type CompanionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     messages?: boolean | Companion$messagesArgs<ExtArgs>
@@ -2365,9 +2365,9 @@ export namespace Prisma {
       description: string
       instructions: string
       seed: string
+      categoryId: string
       createdAt: Date
       updatedAt: Date
-      categoryId: string
     }, ExtArgs["result"]["companion"]>
     composites: {}
   }
@@ -2747,9 +2747,9 @@ export namespace Prisma {
     readonly description: FieldRef<"Companion", 'String'>
     readonly instructions: FieldRef<"Companion", 'String'>
     readonly seed: FieldRef<"Companion", 'String'>
+    readonly categoryId: FieldRef<"Companion", 'String'>
     readonly createdAt: FieldRef<"Companion", 'DateTime'>
     readonly updatedAt: FieldRef<"Companion", 'DateTime'>
-    readonly categoryId: FieldRef<"Companion", 'String'>
   }
     
 
@@ -3149,30 +3149,30 @@ export namespace Prisma {
     id: string | null
     role: $Enums.Role | null
     content: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     companionId: string | null
     userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type MessageMaxAggregateOutputType = {
     id: string | null
     role: $Enums.Role | null
     content: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     companionId: string | null
     userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type MessageCountAggregateOutputType = {
     id: number
     role: number
     content: number
-    createdAt: number
-    updatedAt: number
     companionId: number
     userId: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -3181,30 +3181,30 @@ export namespace Prisma {
     id?: true
     role?: true
     content?: true
-    createdAt?: true
-    updatedAt?: true
     companionId?: true
     userId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type MessageMaxAggregateInputType = {
     id?: true
     role?: true
     content?: true
-    createdAt?: true
-    updatedAt?: true
     companionId?: true
     userId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type MessageCountAggregateInputType = {
     id?: true
     role?: true
     content?: true
-    createdAt?: true
-    updatedAt?: true
     companionId?: true
     userId?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -3284,10 +3284,10 @@ export namespace Prisma {
     id: string
     role: $Enums.Role
     content: string
-    createdAt: Date
-    updatedAt: Date
     companionId: string
     userId: string
+    createdAt: Date
+    updatedAt: Date
     _count: MessageCountAggregateOutputType | null
     _min: MessageMinAggregateOutputType | null
     _max: MessageMaxAggregateOutputType | null
@@ -3311,10 +3311,10 @@ export namespace Prisma {
     id?: boolean
     role?: boolean
     content?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     companionId?: boolean
     userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     companion?: boolean | CompanionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["message"]>
 
@@ -3324,13 +3324,13 @@ export namespace Prisma {
     id?: boolean
     role?: boolean
     content?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     companionId?: boolean
     userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "content" | "createdAt" | "updatedAt" | "companionId" | "userId", ExtArgs["result"]["message"]>
+  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "content" | "companionId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["message"]>
   export type MessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     companion?: boolean | CompanionDefaultArgs<ExtArgs>
   }
@@ -3344,10 +3344,10 @@ export namespace Prisma {
       id: string
       role: $Enums.Role
       content: string
-      createdAt: Date
-      updatedAt: Date
       companionId: string
       userId: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["message"]>
     composites: {}
   }
@@ -3721,10 +3721,10 @@ export namespace Prisma {
     readonly id: FieldRef<"Message", 'String'>
     readonly role: FieldRef<"Message", 'Role'>
     readonly content: FieldRef<"Message", 'String'>
-    readonly createdAt: FieldRef<"Message", 'DateTime'>
-    readonly updatedAt: FieldRef<"Message", 'DateTime'>
     readonly companionId: FieldRef<"Message", 'String'>
     readonly userId: FieldRef<"Message", 'String'>
+    readonly createdAt: FieldRef<"Message", 'DateTime'>
+    readonly updatedAt: FieldRef<"Message", 'DateTime'>
   }
     
 
@@ -5010,9 +5010,9 @@ export namespace Prisma {
     description: 'description',
     instructions: 'instructions',
     seed: 'seed',
+    categoryId: 'categoryId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    categoryId: 'categoryId'
+    updatedAt: 'updatedAt'
   };
 
   export type CompanionScalarFieldEnum = (typeof CompanionScalarFieldEnum)[keyof typeof CompanionScalarFieldEnum]
@@ -5022,10 +5022,10 @@ export namespace Prisma {
     id: 'id',
     role: 'role',
     content: 'content',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     companionId: 'companionId',
-    userId: 'userId'
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
@@ -5192,9 +5192,9 @@ export namespace Prisma {
     description?: StringFilter<"Companion"> | string
     instructions?: StringFilter<"Companion"> | string
     seed?: StringFilter<"Companion"> | string
+    categoryId?: StringFilter<"Companion"> | string
     createdAt?: DateTimeFilter<"Companion"> | Date | string
     updatedAt?: DateTimeFilter<"Companion"> | Date | string
-    categoryId?: StringFilter<"Companion"> | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     messages?: MessageListRelationFilter
   }
@@ -5208,9 +5208,9 @@ export namespace Prisma {
     description?: SortOrder
     instructions?: SortOrder
     seed?: SortOrder
+    categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    categoryId?: SortOrder
     category?: CategoryOrderByWithRelationInput
     messages?: MessageOrderByRelationAggregateInput
     _relevance?: CompanionOrderByRelevanceInput
@@ -5228,9 +5228,9 @@ export namespace Prisma {
     description?: StringFilter<"Companion"> | string
     instructions?: StringFilter<"Companion"> | string
     seed?: StringFilter<"Companion"> | string
+    categoryId?: StringFilter<"Companion"> | string
     createdAt?: DateTimeFilter<"Companion"> | Date | string
     updatedAt?: DateTimeFilter<"Companion"> | Date | string
-    categoryId?: StringFilter<"Companion"> | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     messages?: MessageListRelationFilter
   }, "id">
@@ -5244,9 +5244,9 @@ export namespace Prisma {
     description?: SortOrder
     instructions?: SortOrder
     seed?: SortOrder
+    categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    categoryId?: SortOrder
     _count?: CompanionCountOrderByAggregateInput
     _max?: CompanionMaxOrderByAggregateInput
     _min?: CompanionMinOrderByAggregateInput
@@ -5264,9 +5264,9 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Companion"> | string
     instructions?: StringWithAggregatesFilter<"Companion"> | string
     seed?: StringWithAggregatesFilter<"Companion"> | string
+    categoryId?: StringWithAggregatesFilter<"Companion"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Companion"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Companion"> | Date | string
-    categoryId?: StringWithAggregatesFilter<"Companion"> | string
   }
 
   export type MessageWhereInput = {
@@ -5276,10 +5276,10 @@ export namespace Prisma {
     id?: StringFilter<"Message"> | string
     role?: EnumRoleFilter<"Message"> | $Enums.Role
     content?: StringFilter<"Message"> | string
-    createdAt?: DateTimeFilter<"Message"> | Date | string
-    updatedAt?: DateTimeFilter<"Message"> | Date | string
     companionId?: StringFilter<"Message"> | string
     userId?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    updatedAt?: DateTimeFilter<"Message"> | Date | string
     companion?: XOR<CompanionScalarRelationFilter, CompanionWhereInput>
   }
 
@@ -5287,10 +5287,10 @@ export namespace Prisma {
     id?: SortOrder
     role?: SortOrder
     content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     companionId?: SortOrder
     userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     companion?: CompanionOrderByWithRelationInput
     _relevance?: MessageOrderByRelevanceInput
   }
@@ -5302,10 +5302,10 @@ export namespace Prisma {
     NOT?: MessageWhereInput | MessageWhereInput[]
     role?: EnumRoleFilter<"Message"> | $Enums.Role
     content?: StringFilter<"Message"> | string
-    createdAt?: DateTimeFilter<"Message"> | Date | string
-    updatedAt?: DateTimeFilter<"Message"> | Date | string
     companionId?: StringFilter<"Message"> | string
     userId?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    updatedAt?: DateTimeFilter<"Message"> | Date | string
     companion?: XOR<CompanionScalarRelationFilter, CompanionWhereInput>
   }, "id">
 
@@ -5313,10 +5313,10 @@ export namespace Prisma {
     id?: SortOrder
     role?: SortOrder
     content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     companionId?: SortOrder
     userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: MessageCountOrderByAggregateInput
     _max?: MessageMaxOrderByAggregateInput
     _min?: MessageMinOrderByAggregateInput
@@ -5329,10 +5329,10 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Message"> | string
     role?: EnumRoleWithAggregatesFilter<"Message"> | $Enums.Role
     content?: StringWithAggregatesFilter<"Message"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
     companionId?: StringWithAggregatesFilter<"Message"> | string
     userId?: StringWithAggregatesFilter<"Message"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
   }
 
   export type UserSubscriptionWhereInput = {
@@ -5456,9 +5456,9 @@ export namespace Prisma {
     description: string
     instructions: string
     seed: string
+    categoryId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    categoryId: string
     messages?: MessageUncheckedCreateNestedManyWithoutCompanionInput
   }
 
@@ -5486,9 +5486,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     seed?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    categoryId?: StringFieldUpdateOperationsInput | string
     messages?: MessageUncheckedUpdateManyWithoutCompanionNestedInput
   }
 
@@ -5501,9 +5501,9 @@ export namespace Prisma {
     description: string
     instructions: string
     seed: string
+    categoryId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    categoryId: string
   }
 
   export type CompanionUpdateManyMutationInput = {
@@ -5528,18 +5528,18 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     seed?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    categoryId?: StringFieldUpdateOperationsInput | string
   }
 
   export type MessageCreateInput = {
     id?: string
     role: $Enums.Role
     content: string
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
     companion: CompanionCreateNestedOneWithoutMessagesInput
   }
 
@@ -5547,19 +5547,19 @@ export namespace Prisma {
     id?: string
     role: $Enums.Role
     content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     companionId: string
     userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type MessageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     content?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
     companion?: CompanionUpdateOneRequiredWithoutMessagesNestedInput
   }
 
@@ -5567,39 +5567,39 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companionId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageCreateManyInput = {
     id?: string
     role: $Enums.Role
     content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     companionId: string
     userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type MessageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     content?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type MessageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companionId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserSubscriptionCreateInput = {
@@ -5770,9 +5770,9 @@ export namespace Prisma {
     description?: SortOrder
     instructions?: SortOrder
     seed?: SortOrder
+    categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    categoryId?: SortOrder
   }
 
   export type CompanionMaxOrderByAggregateInput = {
@@ -5784,9 +5784,9 @@ export namespace Prisma {
     description?: SortOrder
     instructions?: SortOrder
     seed?: SortOrder
+    categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    categoryId?: SortOrder
   }
 
   export type CompanionMinOrderByAggregateInput = {
@@ -5798,9 +5798,9 @@ export namespace Prisma {
     description?: SortOrder
     instructions?: SortOrder
     seed?: SortOrder
+    categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    categoryId?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -5839,30 +5839,30 @@ export namespace Prisma {
     id?: SortOrder
     role?: SortOrder
     content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     companionId?: SortOrder
     userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type MessageMaxOrderByAggregateInput = {
     id?: SortOrder
     role?: SortOrder
     content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     companionId?: SortOrder
     userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type MessageMinOrderByAggregateInput = {
     id?: SortOrder
     role?: SortOrder
     content?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     companionId?: SortOrder
     userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -6324,9 +6324,9 @@ export namespace Prisma {
     description?: StringFilter<"Companion"> | string
     instructions?: StringFilter<"Companion"> | string
     seed?: StringFilter<"Companion"> | string
+    categoryId?: StringFilter<"Companion"> | string
     createdAt?: DateTimeFilter<"Companion"> | Date | string
     updatedAt?: DateTimeFilter<"Companion"> | Date | string
-    categoryId?: StringFilter<"Companion"> | string
   }
 
   export type CategoryCreateWithoutCompanionsInput = {
@@ -6348,18 +6348,18 @@ export namespace Prisma {
     id?: string
     role: $Enums.Role
     content: string
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
   }
 
   export type MessageUncheckedCreateWithoutCompanionInput = {
     id?: string
     role: $Enums.Role
     content: string
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
   }
 
   export type MessageCreateOrConnectWithoutCompanionInput = {
@@ -6416,10 +6416,10 @@ export namespace Prisma {
     id?: StringFilter<"Message"> | string
     role?: EnumRoleFilter<"Message"> | $Enums.Role
     content?: StringFilter<"Message"> | string
-    createdAt?: DateTimeFilter<"Message"> | Date | string
-    updatedAt?: DateTimeFilter<"Message"> | Date | string
     companionId?: StringFilter<"Message"> | string
     userId?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    updatedAt?: DateTimeFilter<"Message"> | Date | string
   }
 
   export type CompanionCreateWithoutMessagesInput = {
@@ -6445,9 +6445,9 @@ export namespace Prisma {
     description: string
     instructions: string
     seed: string
+    categoryId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    categoryId: string
   }
 
   export type CompanionCreateOrConnectWithoutMessagesInput = {
@@ -6489,9 +6489,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     seed?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    categoryId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CompanionCreateManyCategoryInput = {
@@ -6552,36 +6552,36 @@ export namespace Prisma {
     id?: string
     role: $Enums.Role
     content: string
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
   }
 
   export type MessageUpdateWithoutCompanionInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     content?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type MessageUncheckedUpdateWithoutCompanionInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     content?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type MessageUncheckedUpdateManyWithoutCompanionInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     content?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
 

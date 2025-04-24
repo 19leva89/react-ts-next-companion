@@ -26,7 +26,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 
 						{children}
 
-						<Toaster />
+						<Toaster position="bottom-right" expand={false} />
 					</ThemeProvider>
 				</body>
 			</html>
