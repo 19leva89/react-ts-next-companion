@@ -3,7 +3,7 @@
 import { toast } from 'sonner'
 import { useTheme } from 'next-themes'
 import { CopyIcon } from 'lucide-react'
-// import { BeatLoader } from 'react-spinners'
+import { BeatLoader } from 'react-spinners'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui'
@@ -11,9 +11,9 @@ import { BotAvatar, UserAvatar } from '@/components/shared'
 
 export interface ChatMessageProps {
 	role: 'system' | 'user'
+	src?: string
 	content?: string
 	isLoading?: boolean
-	src?: string
 }
 
 export const ChatMessage = ({ role, content, isLoading, src }: ChatMessageProps) => {
@@ -32,7 +32,7 @@ export const ChatMessage = ({ role, content, isLoading, src }: ChatMessageProps)
 			{role !== 'user' && src && <BotAvatar src={src} />}
 
 			<div className="max-w-sm px-4 py-2 rounded-md text-sm bg-primary/10">
-				{/* {isLoading ? <BeatLoader size={5} color={theme === 'light' ? 'black' : 'white'} /> : content} */}
+				{isLoading ? <BeatLoader size={5} color={theme === 'light' ? 'black' : 'white'} /> : content}
 			</div>
 
 			{role === 'user' && <UserAvatar />}

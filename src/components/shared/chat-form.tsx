@@ -13,12 +13,12 @@ interface Props {
 	onSubmit: (e: FormEvent<HTMLFormElement>, chatRequestOptions?: ChatRequestOptions | undefined) => void
 }
 
-export const ChatForm = ({ handleInputChange, input, isLoading, onSubmit }: Props) => {
+export const ChatForm = ({ input, isLoading, handleInputChange, onSubmit }: Props) => {
 	return (
 		<form onSubmit={onSubmit} className="flex items-center gap-x-2 py-4 border-t border-primary/10">
 			<Input
-				disabled={isLoading}
 				value={input}
+				disabled={isLoading}
 				onChange={handleInputChange}
 				placeholder="Type a message"
 				className="rounded-lg bg-primary/10"

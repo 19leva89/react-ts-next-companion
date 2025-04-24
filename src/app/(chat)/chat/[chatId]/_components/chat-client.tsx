@@ -1,8 +1,8 @@
 'use client'
 
-import { useCompletion } from 'ai/react'
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useCompletion } from '@ai-sdk/react'
 
 import { Companion, Message } from '@/generated/prisma'
 import { ChatForm, ChatHeader, ChatMessageProps, ChatMessages } from '@/components/shared'
@@ -22,7 +22,7 @@ export const ChatClient = ({ companion }: Props) => {
 
 	const { input, isLoading, handleInputChange, handleSubmit, setInput } = useCompletion({
 		api: `/api/chat/${companion.id}`,
-		onFinish(prompt, completion) {
+		onFinish(_prompt, completion) {
 			const systemMessage: ChatMessageProps = {
 				role: 'system',
 				content: completion,
@@ -53,10 +53,10 @@ export const ChatClient = ({ companion }: Props) => {
 			<ChatMessages companion={companion} isLoading={isLoading} messages={messages} />
 
 			<ChatForm
-				handleInputChange={handleInputChange}
 				input={input}
-				onSubmit={onSubmit}
 				isLoading={isLoading}
+				handleInputChange={handleInputChange}
+				onSubmit={onSubmit}
 			/>
 		</div>
 	)
