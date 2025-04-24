@@ -2123,7 +2123,7 @@ export namespace Prisma {
   export type CompanionMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    userName: string | null
+    email: string | null
     src: string | null
     name: string | null
     description: string | null
@@ -2137,7 +2137,7 @@ export namespace Prisma {
   export type CompanionMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    userName: string | null
+    email: string | null
     src: string | null
     name: string | null
     description: string | null
@@ -2151,7 +2151,7 @@ export namespace Prisma {
   export type CompanionCountAggregateOutputType = {
     id: number
     userId: number
-    userName: number
+    email: number
     src: number
     name: number
     description: number
@@ -2167,7 +2167,7 @@ export namespace Prisma {
   export type CompanionMinAggregateInputType = {
     id?: true
     userId?: true
-    userName?: true
+    email?: true
     src?: true
     name?: true
     description?: true
@@ -2181,7 +2181,7 @@ export namespace Prisma {
   export type CompanionMaxAggregateInputType = {
     id?: true
     userId?: true
-    userName?: true
+    email?: true
     src?: true
     name?: true
     description?: true
@@ -2195,7 +2195,7 @@ export namespace Prisma {
   export type CompanionCountAggregateInputType = {
     id?: true
     userId?: true
-    userName?: true
+    email?: true
     src?: true
     name?: true
     description?: true
@@ -2282,7 +2282,7 @@ export namespace Prisma {
   export type CompanionGroupByOutputType = {
     id: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -2313,7 +2313,7 @@ export namespace Prisma {
   export type CompanionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    userName?: boolean
+    email?: boolean
     src?: boolean
     name?: boolean
     description?: boolean
@@ -2332,7 +2332,7 @@ export namespace Prisma {
   export type CompanionSelectScalar = {
     id?: boolean
     userId?: boolean
-    userName?: boolean
+    email?: boolean
     src?: boolean
     name?: boolean
     description?: boolean
@@ -2343,7 +2343,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type CompanionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "userName" | "src" | "name" | "description" | "instructions" | "seed" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["companion"]>
+  export type CompanionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "email" | "src" | "name" | "description" | "instructions" | "seed" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["companion"]>
   export type CompanionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     messages?: boolean | Companion$messagesArgs<ExtArgs>
@@ -2359,7 +2359,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      userName: string
+      email: string
       src: string
       name: string
       description: string
@@ -2741,7 +2741,7 @@ export namespace Prisma {
   interface CompanionFieldRefs {
     readonly id: FieldRef<"Companion", 'String'>
     readonly userId: FieldRef<"Companion", 'String'>
-    readonly userName: FieldRef<"Companion", 'String'>
+    readonly email: FieldRef<"Companion", 'String'>
     readonly src: FieldRef<"Companion", 'String'>
     readonly name: FieldRef<"Companion", 'String'>
     readonly description: FieldRef<"Companion", 'String'>
@@ -5004,7 +5004,7 @@ export namespace Prisma {
   export const CompanionScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    userName: 'userName',
+    email: 'email',
     src: 'src',
     name: 'name',
     description: 'description',
@@ -5062,7 +5062,7 @@ export namespace Prisma {
   export const CompanionOrderByRelevanceFieldEnum: {
     id: 'id',
     userId: 'userId',
-    userName: 'userName',
+    email: 'email',
     src: 'src',
     name: 'name',
     description: 'description',
@@ -5186,7 +5186,7 @@ export namespace Prisma {
     NOT?: CompanionWhereInput | CompanionWhereInput[]
     id?: StringFilter<"Companion"> | string
     userId?: StringFilter<"Companion"> | string
-    userName?: StringFilter<"Companion"> | string
+    email?: StringFilter<"Companion"> | string
     src?: StringFilter<"Companion"> | string
     name?: StringFilter<"Companion"> | string
     description?: StringFilter<"Companion"> | string
@@ -5202,7 +5202,7 @@ export namespace Prisma {
   export type CompanionOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    userName?: SortOrder
+    email?: SortOrder
     src?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -5222,7 +5222,7 @@ export namespace Prisma {
     OR?: CompanionWhereInput[]
     NOT?: CompanionWhereInput | CompanionWhereInput[]
     userId?: StringFilter<"Companion"> | string
-    userName?: StringFilter<"Companion"> | string
+    email?: StringFilter<"Companion"> | string
     src?: StringFilter<"Companion"> | string
     name?: StringFilter<"Companion"> | string
     description?: StringFilter<"Companion"> | string
@@ -5238,7 +5238,7 @@ export namespace Prisma {
   export type CompanionOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    userName?: SortOrder
+    email?: SortOrder
     src?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -5258,7 +5258,7 @@ export namespace Prisma {
     NOT?: CompanionScalarWhereWithAggregatesInput | CompanionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Companion"> | string
     userId?: StringWithAggregatesFilter<"Companion"> | string
-    userName?: StringWithAggregatesFilter<"Companion"> | string
+    email?: StringWithAggregatesFilter<"Companion"> | string
     src?: StringWithAggregatesFilter<"Companion"> | string
     name?: StringWithAggregatesFilter<"Companion"> | string
     description?: StringWithAggregatesFilter<"Companion"> | string
@@ -5435,7 +5435,7 @@ export namespace Prisma {
   export type CompanionCreateInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -5450,7 +5450,7 @@ export namespace Prisma {
   export type CompanionUncheckedCreateInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -5465,7 +5465,7 @@ export namespace Prisma {
   export type CompanionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -5480,7 +5480,7 @@ export namespace Prisma {
   export type CompanionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -5495,7 +5495,7 @@ export namespace Prisma {
   export type CompanionCreateManyInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -5509,7 +5509,7 @@ export namespace Prisma {
   export type CompanionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -5522,7 +5522,7 @@ export namespace Prisma {
   export type CompanionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -5764,7 +5764,7 @@ export namespace Prisma {
   export type CompanionCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    userName?: SortOrder
+    email?: SortOrder
     src?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -5778,7 +5778,7 @@ export namespace Prisma {
   export type CompanionMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    userName?: SortOrder
+    email?: SortOrder
     src?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -5792,7 +5792,7 @@ export namespace Prisma {
   export type CompanionMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    userName?: SortOrder
+    email?: SortOrder
     src?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -6261,7 +6261,7 @@ export namespace Prisma {
   export type CompanionCreateWithoutCategoryInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -6275,7 +6275,7 @@ export namespace Prisma {
   export type CompanionUncheckedCreateWithoutCategoryInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -6318,7 +6318,7 @@ export namespace Prisma {
     NOT?: CompanionScalarWhereInput | CompanionScalarWhereInput[]
     id?: StringFilter<"Companion"> | string
     userId?: StringFilter<"Companion"> | string
-    userName?: StringFilter<"Companion"> | string
+    email?: StringFilter<"Companion"> | string
     src?: StringFilter<"Companion"> | string
     name?: StringFilter<"Companion"> | string
     description?: StringFilter<"Companion"> | string
@@ -6425,7 +6425,7 @@ export namespace Prisma {
   export type CompanionCreateWithoutMessagesInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -6439,7 +6439,7 @@ export namespace Prisma {
   export type CompanionUncheckedCreateWithoutMessagesInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -6469,7 +6469,7 @@ export namespace Prisma {
   export type CompanionUpdateWithoutMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -6483,7 +6483,7 @@ export namespace Prisma {
   export type CompanionUncheckedUpdateWithoutMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -6497,7 +6497,7 @@ export namespace Prisma {
   export type CompanionCreateManyCategoryInput = {
     id?: string
     userId: string
-    userName: string
+    email: string
     src: string
     name: string
     description: string
@@ -6510,7 +6510,7 @@ export namespace Prisma {
   export type CompanionUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -6524,7 +6524,7 @@ export namespace Prisma {
   export type CompanionUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -6538,7 +6538,7 @@ export namespace Prisma {
   export type CompanionUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    userName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     src?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string

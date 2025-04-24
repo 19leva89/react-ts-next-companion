@@ -44,7 +44,7 @@ export const Companions = ({ data }: Props) => {
 						</CardHeader>
 
 						<CardFooter className="flex items-center justify-between text-xs text-muted-foreground">
-							<p className="lowercase">@{item.userName}</p>
+							<p className="lowercase">{item.email}</p>
 
 							<div className="flex items-center">
 								<MessagesSquareIcon className="size-3 mr-1" />

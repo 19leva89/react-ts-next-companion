@@ -17,10 +17,12 @@ async function up() {
 }
 
 async function down() {
-	await prisma.$executeRaw`TRUNCATE TABLE "category" RESTART IDENTITY CASCADE;`
-	await prisma.$executeRaw`TRUNCATE TABLE "companion" RESTART IDENTITY CASCADE;`
-	await prisma.$executeRaw`TRUNCATE TABLE "message" RESTART IDENTITY CASCADE;`
-	await prisma.$executeRaw`TRUNCATE TABLE "user_subscription" RESTART IDENTITY CASCADE;`
+	await prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0;`
+	await prisma.$executeRaw`TRUNCATE TABLE user_subscription;`
+	await prisma.$executeRaw`TRUNCATE TABLE message;`
+	await prisma.$executeRaw`TRUNCATE TABLE companion;`
+	await prisma.$executeRaw`TRUNCATE TABLE category;`
+	await prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 1;`
 }
 
 async function main() {

@@ -125,7 +125,7 @@ exports.Prisma.CategoryScalarFieldEnum = {
 exports.Prisma.CompanionScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  userName: 'userName',
+  email: 'email',
   src: 'src',
   name: 'name',
   description: 'description',
@@ -168,7 +168,7 @@ exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
 exports.Prisma.CompanionOrderByRelevanceFieldEnum = {
   id: 'id',
   userId: 'userId',
-  userName: 'userName',
+  email: 'email',
   src: 'src',
   name: 'name',
   description: 'description',

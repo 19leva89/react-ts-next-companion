@@ -18,7 +18,7 @@ export async function PATCH(req: NextRequest, { params }: IParams) {
 			return new NextResponse('Companion ID is Required', { status: 400 })
 		}
 
-		if (!user || !user.id || !user.firstName) {
+		if (!user || !user.id || !user.emailAddresses) {
 			return new NextResponse('Unauthorized', { status: 401 })
 		}
 
@@ -40,7 +40,7 @@ export async function PATCH(req: NextRequest, { params }: IParams) {
 			data: {
 				categoryId,
 				userId: user.id,
-				userName: user.firstName,
+				email: user.emailAddresses[0].emailAddress,
 				src,
 				name,
 				description,
@@ -65,8 +65,8 @@ export async function DELETE(req: NextRequest, { params }: IParams) {
 
 		const companion = await prisma.companion.delete({
 			where: {
-				userId,
 				id: (await params).companionId,
+				userId,
 			},
 		})
 
