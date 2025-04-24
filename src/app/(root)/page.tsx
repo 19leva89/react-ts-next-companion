@@ -1,34 +1,32 @@
-// import Companions from '@/components/companions'
-
 import { prisma } from '@/lib/prisma'
-import { Categories, SearchInput } from '@/components/shared'
+import { Categories, Companions, SearchInput } from '@/components/shared'
 
 interface Props {
-	searchParams: {
+	searchParams: Promise<{
 		categoryId: string
 		name: string
-	}
+	}>
 }
 
 const RootPage = async ({ searchParams }: Props) => {
-	// const data = await prisma.companion.findMany({
-	// 	where: {
-	// 		categoryId: searchParams.categoryId,
-	// 		name: {
-	// 			search: searchParams.name,
-	// 		},
-	// 	},
-	// 	orderBy: {
-	// 		createdAt: 'desc',
-	// 	},
-	// 	include: {
-	// 		_count: {
-	// 			select: {
-	// 				messages: true,
-	// 			},
-	// 		},
-	// 	},
-	// })
+	const data = await prisma.companion.findMany({
+		where: {
+			categoryId: (await searchParams).categoryId,
+			name: {
+				search: (await searchParams).name,
+			},
+		},
+		orderBy: {
+			createdAt: 'desc',
+		},
+		include: {
+			_count: {
+				select: {
+					messages: true,
+				},
+			},
+		},
+	})
 
 	const categories = await prisma.category.findMany()
 
@@ -38,7 +36,7 @@ const RootPage = async ({ searchParams }: Props) => {
 
 			<Categories data={categories} />
 
-			{/* <Companions data={data} /> */}
+			<Companions data={data} />
 		</div>
 	)
 }
