@@ -1,7 +1,7 @@
 import { Redis } from '@upstash/redis'
 import { PineconeStore } from '@langchain/pinecone'
 import { OpenAIEmbeddings } from '@langchain/openai'
-import { Pinecone as PineconeClient } from '@pinecone-database/pinecone'
+import { Pinecone } from '@pinecone-database/pinecone'
 
 export type CompanionKey = {
 	userId: string
@@ -12,38 +12,44 @@ export type CompanionKey = {
 export class MemoryManager {
 	private static instance: MemoryManager
 	private history: Redis
-	private vectorDBClient: PineconeClient
+	private pineconeClient: Pinecone
+	private pineconeIndex: ReturnType<Pinecone['index']>
 
 	public constructor() {
 		this.history = Redis.fromEnv()
-		this.vectorDBClient = new PineconeClient()
+		this.pineconeClient = new Pinecone({
+			apiKey: process.env.PINECONE_API_KEY!,
+		})
+		this.pineconeIndex = this.pineconeClient.index(process.env.PINECONE_INDEX!)
 	}
 
 	public async init() {
-		if (this.vectorDBClient instanceof PineconeClient) {
-			const pineconeClient = this.vectorDBClient as any
+		try {
+			await this.pineconeIndex.describeIndexStats()
+		} catch (error) {
+			console.error('Failed to connect to Pinecone index:', error)
 
-			pineconeClient.init({
-				apiKey: process.env.PINECONE_API_KEY!,
-			})
+			throw new Error('Pinecone index not available')
 		}
 	}
 
 	public async vectorSearch(recentChatHistory: string, companionFileName: string) {
-		const pineconeClient = <PineconeClient>this.vectorDBClient
+		try {
+			const embeddings = new OpenAIEmbeddings({
+				openAIApiKey: process.env.OPENAI_API_KEY!,
+			})
 
-		const pineconeIndex = pineconeClient.Index(process.env.PINECONE_INDEX!)
+			const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
+				pineconeIndex: this.pineconeIndex,
+				namespace: companionFileName,
+			})
 
-		const vectorStore = await PineconeStore.fromExistingIndex(
-			new OpenAIEmbeddings({ openAIApiKey: process.env.OPENAI_API_KEY! }),
-			{ pineconeIndex },
-		)
-
-		const similarDocs = await vectorStore
-			.similaritySearch(recentChatHistory, 3, { fileName: companionFileName })
-			.catch((err) => console.error('Failed to get vector search results', err))
-
-		return similarDocs
+			const similarDocs = await vectorStore.similaritySearch(recentChatHistory, 3)
+			return similarDocs
+		} catch (error) {
+			console.error('Failed to perform vector search:', error)
+			return []
+		}
 	}
 
 	public static async getInstance(): Promise<MemoryManager> {
@@ -96,6 +102,7 @@ export class MemoryManager {
 
 	public async seedChatHistory(seedContent: String, delimiter: string = '\n', companionKey: CompanionKey) {
 		const key = this.generateRedisCompanionKey(companionKey)
+
 		if (await this.history.exists(key)) {
 			console.log('User already has chat history')
 
