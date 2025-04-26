@@ -26,20 +26,41 @@ export const ChatClient = ({ companion }: Props) => {
 			const systemMessage: ChatMessageProps = {
 				role: 'system',
 				content: completion,
-			}
+				companionId: companion.id,
+				createdAt: new Date(),
+			} as Message
 
 			setMessages((current) => [...current, systemMessage])
 			setInput('')
 
 			router.refresh()
 		},
+		onError: (error) => {
+			console.error('Stream Error Details:', {
+				error,
+				lastInput: input,
+				companionId: companion.id,
+			})
+
+			setInput('')
+
+			router.refresh()
+		},
+		async onResponse(response) {
+			if (response.status !== 200) {
+				const errorData = await response.json()
+				console.error('Server Response Error:', errorData)
+			}
+		},
 	})
 
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-		const userMessage: ChatMessageProps = {
+		const userMessage = {
 			role: 'user',
 			content: input,
-		}
+			companionId: companion.id,
+			createdAt: new Date(),
+		} as Message
 
 		setMessages((current) => [...current, userMessage])
 

@@ -28,12 +28,9 @@ export const Companions = ({ data }: Props) => {
 	return (
 		<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 pb-10">
 			{data.map((item) => (
-				<Card
-					key={item.id}
-					className="border-0 rounded-xl bg-primary/10  cursor-pointer hover:opacity-75 transition"
-				>
-					<Link href={`/chat/${item.id}`}>
-						<CardHeader className="flex items-center justify-center text-center text-muted-foreground">
+				<Link key={item.id} href={`/chat/${item.id}`}>
+					<Card className="justify-between h-full border-0 rounded-xl bg-primary/10 cursor-pointer hover:opacity-75 transition">
+						<CardHeader className="flex flex-col items-center justify-center gap-1 text-center text-muted-foreground">
 							<div className="relative size-32">
 								<Image src={item.src} alt={item.name} fill className="rounded-xl object-cover" />
 							</div>
@@ -44,7 +41,7 @@ export const Companions = ({ data }: Props) => {
 						</CardHeader>
 
 						<CardFooter className="flex items-center justify-between text-xs text-muted-foreground">
-							<p className="lowercase">{item.email}</p>
+							<p className="lowercase truncate">{item.email}</p>
 
 							<div className="flex items-center">
 								<MessagesSquareIcon className="size-3 mr-1" />
@@ -52,8 +49,8 @@ export const Companions = ({ data }: Props) => {
 								{item._count.messages}
 							</div>
 						</CardFooter>
-					</Link>
-				</Card>
+					</Card>
+				</Link>
 			))}
 		</div>
 	)

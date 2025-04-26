@@ -100,7 +100,7 @@ export class MemoryManager {
 		return recentChats
 	}
 
-	public async seedChatHistory(seedContent: String, delimiter: string = '\n', companionKey: CompanionKey) {
+	public async seedChatHistory(seedContent: string, delimiter: string = '\n', companionKey: CompanionKey) {
 		const key = this.generateRedisCompanionKey(companionKey)
 
 		if (await this.history.exists(key)) {

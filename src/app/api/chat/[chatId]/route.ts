@@ -1,14 +1,11 @@
-import dotenv from 'dotenv'
+import { streamText } from 'ai'
 import { currentUser } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
-import { Replicate } from '@langchain/community/llms/replicate'
-import { CallbackManager } from '@langchain/core/callbacks/manager'
 
 import { prisma } from '@/lib/prisma'
+import { openai } from '@/lib/openai'
 import { ratelimit } from '@/lib/rate-limit'
 import { MemoryManager } from '@/lib/memory'
-
-dotenv.config({ path: `.env` })
 
 interface IParams {
 	params: Promise<{ chatId: string }>
@@ -16,21 +13,20 @@ interface IParams {
 
 export async function POST(request: NextRequest, { params }: IParams) {
 	try {
+		// User authentication
 		const user = await currentUser()
-		if (!user || !user.emailAddresses || !user.id) {
-			return new Response('Unauthorized!', { status: 401 })
-		}
+		if (!user || !user.emailAddresses || !user.id) return new NextResponse('Unauthorized', { status: 401 })
 
+		// Validation of the request body
 		const { prompt } = await request.json()
-		if (!prompt) {
-			return new Response('Missing prompt', { status: 400 })
-		}
+		if (!prompt) return new NextResponse('Prompt required', { status: 400 })
 
+		// Validation of the rate limit
 		const identifier = request.url + '-' + user.id
 		const { success } = await ratelimit(identifier)
+		if (!success) return new NextResponse('Rate limit exceeded', { status: 429 })
 
-		if (!success) return new NextResponse('Ratelimit Exceeded!', { status: 429 })
-
+		// Find the companion
 		const companion = await prisma.companion.update({
 			where: { id: (await params).chatId },
 			data: {
@@ -44,80 +40,60 @@ export async function POST(request: NextRequest, { params }: IParams) {
 			},
 		})
 
-		if (!companion) return new NextResponse('Companion Not Found.', { status: 404 })
-
-		const name = companion.id
-		const companion_file_name = name + '.txt'
+		if (!companion) return new NextResponse('Companion not found', { status: 404 })
 
 		const companionKey = {
-			companionName: name,
+			companionName: companion.id,
 			userId: user.id,
 			modelName: 'llama2-13b',
 		}
 
+		// Init memory manager
 		const memoryManager = await MemoryManager.getInstance()
 
+		// Init chat history
 		const records = await memoryManager.readLatestHistory(companionKey)
+		if (records.length === 0) {
+			await memoryManager.seedChatHistory(companion.seed, '\n\n', companionKey)
+		}
 
-		if (records.length === 0) await memoryManager.seedChatHistory(companion.seed, '\n\n', companionKey)
-
-		await memoryManager.writeToHistory('User: ' + prompt + '\n', companionKey)
-
+		// Update chat history
+		await memoryManager.writeToHistory(`User: ${prompt}\n`, companionKey)
 		const recentChatHistory = await memoryManager.readLatestHistory(companionKey)
 
-		const similarDocs = await memoryManager.vectorSearch(recentChatHistory, companion_file_name)
-
+		// Vector search
+		const similarDocs = await memoryManager.vectorSearch(recentChatHistory, `${companion.id}.txt`)
 		let relevantHistory = ''
 
 		if (!!similarDocs && similarDocs.length !== 0)
 			relevantHistory = similarDocs.map((doc) => doc.pageContent).join('\n')
 
-		const model = new Replicate({
-			model: 'a16z-infra/llama-2-13b-chat:df7690f1994d94e96ad9d568eac121aecf50684a0b0963b25a41cc40061269e5',
-			input: { max_length: 2048 },
-			apiKey: process.env.REPLICATE_API_TOKEN,
-			callbackManager: CallbackManager.fromHandlers({
-				handleLLMStart: async () => console.log('[LLM] Streaming from model'),
-				handleLLMNewToken: async (token) => {
-					// Отправка каждого токена как данных потока
-					if (token) {
-						stream.push(token)
-					}
-				},
-				handleLLMEnd: async () => {
-					console.log('[LLM END]')
-				},
-				handleLLMError: async (err: Error) => console.error('[LLM ERROR]', err),
-			}),
-		})
-
-		model.verbose = true
-
-		const resp = String(
-			await model
-				.invoke(
-					`
-        ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix. 
+		// Generate a response
+		const result = streamText({
+			model: openai('gpt-3.5-turbo'),
+			system: `
+				ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix.
 
         ${companion.instructions}
-
+        
         Below are relevant details about ${companion.name}'s past and the conversation you are in.
         ${relevantHistory}
 
+				${recentChatHistory}\n${companion.name}:
+      `,
+			messages: [{ role: 'user', content: prompt }],
+		})
 
-        ${recentChatHistory}\n${companion.name}:`,
-				)
-				.catch(console.error),
-		)
+		let completion = ''
 
-		const cleaned = resp.replaceAll(',', '')
-		const chunks = cleaned.split('\n')
-		const response = chunks[0]
+		// Receive a text stream
+		const stream = result.textStream
 
-		await memoryManager.writeToHistory('' + response.trim(), companionKey)
-
-		if (response !== undefined && response.length > 1) {
-			memoryManager.writeToHistory('' + response.trim(), companionKey)
+		// Collect the full response and save it in the DB
+		const saveCompletion = async () => {
+			for await (const textPart of stream) {
+				completion += textPart
+			}
 
 			await prisma.companion.update({
 				where: {
@@ -126,7 +102,7 @@ export async function POST(request: NextRequest, { params }: IParams) {
 				data: {
 					messages: {
 						create: {
-							content: response.trim(),
+							content: completion,
 							role: 'system',
 							userId: user.id,
 						},
@@ -135,22 +111,14 @@ export async function POST(request: NextRequest, { params }: IParams) {
 			})
 		}
 
-		const { Readable } = require('stream')
-		const stream = new Readable({
-			read() {}, // Этот метод будет вызываться при чтении потока
-		})
-		stream.push(response)
-		// stream.push(null)
+		// Start saving in the background
+		saveCompletion().catch(console.error)
 
-		return new NextResponse(stream, {
-			headers: {
-				'Content-Type': 'text/plain; charset=utf-8',
-				'Transfer-Encoding': 'chunked',
-			},
-		})
+		// Return the text stream directly
+		return result.toDataStreamResponse()
 	} catch (error) {
-		console.error('[CHAT_POST]', error)
+		console.error('[CHAT_POST_ERROR]', error)
 
-		return new NextResponse('Internal Error', { status: 500 })
+		return new NextResponse('Internal server error', { status: 500 })
 	}
 }

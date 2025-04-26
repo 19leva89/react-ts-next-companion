@@ -15,7 +15,7 @@ export async function PATCH(req: NextRequest, { params }: IParams) {
 		const { src, name, description, instructions, seed, categoryId } = body
 
 		if (!(await params).companionId) {
-			return new NextResponse('Companion ID is Required', { status: 400 })
+			return new NextResponse('Companion ID is required', { status: 400 })
 		}
 
 		if (!user || !user.id || !user.emailAddresses) {
@@ -23,7 +23,7 @@ export async function PATCH(req: NextRequest, { params }: IParams) {
 		}
 
 		if (!src || !name || !description || !instructions || !seed || !categoryId) {
-			return new NextResponse('Missing Required Field', { status: 400 })
+			return new NextResponse('Missing required field', { status: 400 })
 		}
 
 		// const isPro = await checkSubscription()
@@ -53,7 +53,7 @@ export async function PATCH(req: NextRequest, { params }: IParams) {
 	} catch (error) {
 		console.error('[COMPANION_PATCH]', error)
 
-		return new NextResponse('Internal Error', { status: 500 })
+		return new NextResponse('Internal error', { status: 500 })
 	}
 }
 
@@ -74,6 +74,6 @@ export async function DELETE(req: NextRequest, { params }: IParams) {
 	} catch (error) {
 		console.error('[COMPANION_DELETE]', error)
 
-		return new NextResponse('Internal Error', { status: 500 })
+		return new NextResponse('Internal error', { status: 500 })
 	}
 }

@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 		}
 
 		if (!src || !name || !description || !instructions || !seed || !categoryId) {
-			return new NextResponse('Missing Required Field', { status: 400 })
+			return new NextResponse('Missing required field', { status: 400 })
 		}
 
 		// const isPro = await checkSubscription()
@@ -41,6 +41,6 @@ export async function POST(req: NextRequest) {
 	} catch (error) {
 		console.error('[COMPANION_POST]', error)
 
-		return new NextResponse('Internal Error', { status: 500 })
+		return new NextResponse('Internal error', { status: 500 })
 	}
 }
