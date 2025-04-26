@@ -23,9 +23,11 @@ export const checkSubscription = async () => {
 
 	if (!userSubscription) return false
 
-	const isValid =
+	const isValid = Boolean(
 		userSubscription.stripePriceId &&
-		userSubscription.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now()
+			userSubscription.stripeCurrentPeriodEnd &&
+			userSubscription.stripeCurrentPeriodEnd.getTime() + DAY_IN_MS > Date.now(),
+	)
 
-	return !!isValid
+	return isValid
 }
