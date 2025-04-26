@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth, currentUser } from '@clerk/nextjs/server'
 
 import { prisma } from '@/lib/prisma'
-// import { checkSubscription } from '@/lib/subscription'
+import { checkSubscription } from '@/lib/subscription'
 
 interface IParams {
 	params: Promise<{ companionId: string }>
@@ -26,11 +26,11 @@ export async function PATCH(req: NextRequest, { params }: IParams) {
 			return new NextResponse('Missing required field', { status: 400 })
 		}
 
-		// const isPro = await checkSubscription()
+		const isPro = await checkSubscription()
 
-		// if (!isPro) {
-		// 	return new NextResponse('Pro Subscription is Required to Create New Companion.', { status: 403 })
-		// }
+		if (!isPro) {
+			return new NextResponse('Pro subscription is required to create new companion', { status: 403 })
+		}
 
 		const companion = await prisma.companion.update({
 			where: {

@@ -2,7 +2,7 @@ Name:
 Eminem
 
 Description:
-
+Rap legend
 
 Category:
 Musicians

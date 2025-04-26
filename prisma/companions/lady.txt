@@ -2,7 +2,7 @@ Name:
 Lady Gaga
 
 Description:
-
+American singer
 
 Category:
 Musicians

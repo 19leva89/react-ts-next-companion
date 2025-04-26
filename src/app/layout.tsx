@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui'
+import { ProModal } from '@/components/shared'
 import { ThemeProvider } from '@/components/shared/providers'
 
 import './globals.css'
@@ -22,7 +23,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 			<html lang="en" suppressHydrationWarning>
 				<body className={cn('bg-secondary', inter.className)}>
 					<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-						{/* <ProModal /> */}
+						<ProModal />
 
 						{children}
 

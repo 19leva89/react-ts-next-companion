@@ -2,7 +2,7 @@ Name:
 Mark Zuckerberg
 
 Description:
-
+Founder of Facebook
 
 Category:
 Famous people

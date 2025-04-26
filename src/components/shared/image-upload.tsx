@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import { CldUploadButton } from 'next-cloudinary'
+
+import { useClient } from '@/hooks/use-client'
 
 interface Props {
 	value: string
@@ -11,11 +12,7 @@ interface Props {
 }
 
 export const ImageUpload = ({ value, disabled, onChange }: Props) => {
-	const [isMounted, setIsMounted] = useState<boolean>(false)
-
-	useEffect(() => {
-		setIsMounted(true)
-	}, [])
+	const { isMounted } = useClient()
 
 	if (!isMounted) return null
 

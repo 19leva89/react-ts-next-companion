@@ -19,15 +19,13 @@ interface Props {
 	isPro: boolean
 }
 
-export const Navbar = () => {
+export const Navbar = ({ isPro }: Props) => {
 	const proModal = useProModal()
 
 	return (
 		<div className="z-50 fixed flex justify-between items-center w-full h-16 py-2 px-4 border-b border-primary/10 bg-secondary">
 			<div className="flex items-center gap-4">
-				<MobileSidebar
-				// isPro={isPro}
-				/>
+				<MobileSidebar isPro={isPro} />
 
 				<Link href="/">
 					<h1 className={cn('hidden md:block text-xl md:text-3xl font-bold text-primary', font.className)}>
@@ -37,12 +35,12 @@ export const Navbar = () => {
 			</div>
 
 			<div className="flex items-center gap-x-3">
-				{/* {!isPro && ( */}
-				<Button variant="premium" size="sm" onClick={proModal.onOpen} className="cursor-pointer">
-					Upgrade
-					<SparklesIcon className="size-4 ml-2 fill-white text-white" />
-				</Button>
-				{/* )} */}
+				{!isPro && (
+					<Button variant="premium" size="sm" onClick={proModal.onOpen} className="cursor-pointer">
+						Upgrade
+						<SparklesIcon className="size-4 ml-2 fill-white text-white" />
+					</Button>
+				)}
 
 				<ModeToggle />
 

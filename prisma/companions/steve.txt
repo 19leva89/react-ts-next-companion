@@ -2,7 +2,7 @@ Name:
 Steve Jobs
 
 Description:
-
+Co-founder of Apple
 
 Category:
 Famous people

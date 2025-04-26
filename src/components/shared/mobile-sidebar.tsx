@@ -7,7 +7,7 @@ interface Props {
 	isPro: boolean
 }
 
-export const MobileSidebar = () => {
+export const MobileSidebar = ({ isPro }: Props) => {
 	return (
 		<Sheet>
 			<SheetTrigger className="cursor-pointer md:hidden">
@@ -19,9 +19,7 @@ export const MobileSidebar = () => {
 
 				<SheetDescription className="hidden" />
 
-				<Sidebar
-				// isPro={isPro}
-				/>
+				<Sidebar isPro={isPro} />
 			</SheetContent>
 		</Sheet>
 	)

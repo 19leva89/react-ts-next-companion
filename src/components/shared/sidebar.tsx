@@ -10,7 +10,7 @@ interface Props {
 	isPro: boolean
 }
 
-export const Sidebar = () => {
+export const Sidebar = ({ isPro }: Props) => {
 	const router = useRouter()
 	const pathname = usePathname()
 	const proModal = useProModal()
@@ -37,7 +37,7 @@ export const Sidebar = () => {
 	]
 
 	const onNavigate = (url: string, pro: boolean) => {
-		// if (pro && !isPro) return proModal.onOpen()
+		if (pro && !isPro) return proModal.onOpen()
 
 		return router.push(url)
 	}
