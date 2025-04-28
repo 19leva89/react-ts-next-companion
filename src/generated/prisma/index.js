@@ -191,7 +191,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\IT\\IT-BRAINS\\work\\react-ts\\react-ts-next-companion\\src\\generated\\prisma",
+      "value": "C:\\Users\\sobolev\\work\\react-ts\\react-ts-next-companion\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -205,7 +205,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\IT\\IT-BRAINS\\work\\react-ts\\react-ts-next-companion\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\sobolev\\work\\react-ts\\react-ts-next-companion\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
