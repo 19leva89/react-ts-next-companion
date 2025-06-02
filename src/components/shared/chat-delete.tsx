@@ -35,7 +35,7 @@ export const ChatDelete = ({ companion, isOpen, onClose }: Props) => {
 			router.push('/')
 
 			// onClose()
-		} catch (error) {
+		} catch {
 			toast.error('Something Went Wrong')
 		}
 	}
@@ -53,9 +53,9 @@ export const ChatDelete = ({ companion, isOpen, onClose }: Props) => {
 				</AlertDialogHeader>
 
 				<AlertDialogFooter>
-					<AlertDialogCancel className="cursor-pointer">Cancel</AlertDialogCancel>
+					<AlertDialogCancel className='cursor-pointer'>Cancel</AlertDialogCancel>
 
-					<AlertDialogAction onClick={onDelete} className="cursor-pointer">
+					<AlertDialogAction onClick={onDelete} className='cursor-pointer'>
 						Confirm Delete
 					</AlertDialogAction>
 				</AlertDialogFooter>

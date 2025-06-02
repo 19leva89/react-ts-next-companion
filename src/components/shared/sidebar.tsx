@@ -43,20 +43,20 @@ export const Sidebar = ({ isPro }: Props) => {
 	}
 
 	return (
-		<div className="flex flex-col h-full space-y-4 text-primary bg-secondary">
-			<div className="flex flex-1 justify-center p-3">
-				<div className="space-y-2">
+		<div className='flex h-full flex-col space-y-4 bg-secondary text-primary'>
+			<div className='flex flex-1 justify-center p-3'>
+				<div className='space-y-2'>
 					{routes.map((route) => (
 						<div
 							key={route.href}
 							onClick={() => onNavigate(route.href, route.pro)}
 							className={cn(
-								'flex justify-start w-full p-3 rounded-lg text-muted-foreground text-xs font-medium cursor-pointer hover:text-primary hover:bg-primary/10 transition group',
+								'group flex w-full cursor-pointer justify-start rounded-lg p-3 text-xs font-medium text-muted-foreground transition hover:bg-primary/10 hover:text-primary',
 								pathname === route.href && 'bg-primary/10 text-primary',
 							)}
 						>
-							<div className="flex flex-col flex-1 items-center gap-y-2">
-								<route.icon className="size-5" />
+							<div className='flex flex-1 flex-col items-center gap-y-2'>
+								<route.icon className='size-5' />
 
 								{route.label}
 							</div>

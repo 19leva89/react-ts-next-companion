@@ -6,8 +6,8 @@ interface Props {
 
 export const BotAvatar = ({ src }: Props) => {
 	return (
-		<Avatar className="size-12">
-			<AvatarImage src={src} className="size-12" />
+		<Avatar className='size-12'>
+			<AvatarImage src={src} className='size-12' />
 		</Avatar>
 	)
 }
