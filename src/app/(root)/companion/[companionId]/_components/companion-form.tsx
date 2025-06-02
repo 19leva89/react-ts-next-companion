@@ -64,29 +64,29 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 
 			router.refresh()
 			router.push('/')
-		} catch (error) {
+		} catch {
 			toast.error('Something Went Wrong!')
 		}
 	}
 
 	return (
-		<div className="h-full max-w-3xl p-4 space-y-2 mx-auto">
+		<div className='mx-auto h-full max-w-3xl space-y-2 p-4'>
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 pb-10">
-					<div className="w-full space-y-2">
+				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8 pb-10'>
+					<div className='w-full space-y-2'>
 						<div>
-							<h3 className="text-lg font-medium">General Information</h3>
+							<h3 className='text-lg font-medium'>General Information</h3>
 
-							<p className="text-sm text-muted-foreground">General information about your Companion</p>
+							<p className='text-sm text-muted-foreground'>General information about your Companion</p>
 						</div>
 
-						<Separator className="bg-primary/10" />
+						<Separator className='bg-primary/10' />
 					</div>
 
 					<FormField
-						name="src"
+						name='src'
 						render={({ field }) => (
-							<FormItem className="flex flex-col items-center justify-center space-y-4">
+							<FormItem className='flex flex-col items-center justify-center space-y-4'>
 								<FormControl>
 									<ImageUpload value={field.value} disabled={isLoading} onChange={field.onChange} />
 								</FormControl>
@@ -96,16 +96,16 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 						)}
 					/>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
 						<FormField
-							name="name"
+							name='name'
 							control={form.control}
 							render={({ field }) => (
-								<FormItem className="col-span-2 md:col-span-1">
+								<FormItem className='col-span-2 md:col-span-1'>
 									<FormLabel>Name</FormLabel>
 
 									<FormControl>
-										<Input disabled={isLoading} placeholder="Elon Musk" {...field} />
+										<Input disabled={isLoading} placeholder='Elon Musk' {...field} />
 									</FormControl>
 
 									<FormDescription>This is how your AI Companion will be named</FormDescription>
@@ -116,14 +116,14 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 						/>
 
 						<FormField
-							name="description"
+							name='description'
 							control={form.control}
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Description</FormLabel>
 
 									<FormControl>
-										<Input disabled={isLoading} placeholder="CEO & Founder of Tesla, SpaceX" {...field} />
+										<Input disabled={isLoading} placeholder='CEO & Founder of Tesla, SpaceX' {...field} />
 									</FormControl>
 
 									<FormDescription>Short description for your AI Companion</FormDescription>
@@ -135,7 +135,7 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 
 						<FormField
 							control={form.control}
-							name="categoryId"
+							name='categoryId'
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Category</FormLabel>
@@ -147,14 +147,14 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 										onValueChange={field.onChange}
 									>
 										<FormControl>
-											<SelectTrigger className="bg-background cursor-pointer">
-												<SelectValue defaultValue={field.value} placeholder="Select a category" />
+											<SelectTrigger className='cursor-pointer bg-background'>
+												<SelectValue defaultValue={field.value} placeholder='Select a category' />
 											</SelectTrigger>
 										</FormControl>
 
 										<SelectContent>
 											{categories.map((category) => (
-												<SelectItem key={category.id} value={category.id} className="cursor-pointer">
+												<SelectItem key={category.id} value={category.id} className='cursor-pointer'>
 													{category.name}
 												</SelectItem>
 											))}
@@ -169,18 +169,18 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 						/>
 					</div>
 
-					<div className="w-full space-y-2">
+					<div className='w-full space-y-2'>
 						<div>
-							<h3 className="text-lg font-medium">Configuration</h3>
+							<h3 className='text-lg font-medium'>Configuration</h3>
 
-							<p className="text-sm text-muted-foreground">Detailed instructions for AI Behavior</p>
+							<p className='text-sm text-muted-foreground'>Detailed instructions for AI Behavior</p>
 						</div>
 
-						<Separator className="bg-primary/10" />
+						<Separator className='bg-primary/10' />
 					</div>
 
 					<FormField
-						name="instructions"
+						name='instructions'
 						control={form.control}
 						render={({ field }) => (
 							<FormItem>
@@ -191,7 +191,7 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 										rows={7}
 										placeholder={PREAMBLE}
 										disabled={isLoading}
-										className="bg-background resize-none"
+										className='resize-none bg-background'
 										{...field}
 									/>
 								</FormControl>
@@ -206,7 +206,7 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 					/>
 
 					<FormField
-						name="seed"
+						name='seed'
 						control={form.control}
 						render={({ field }) => (
 							<FormItem>
@@ -217,7 +217,7 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 										rows={7}
 										placeholder={SEED_CHAT}
 										disabled={isLoading}
-										className="bg-background resize-none"
+										className='resize-none bg-background'
 										{...field}
 									/>
 								</FormControl>
@@ -230,11 +230,11 @@ export const CompanionForm = ({ initialData, categories }: Props) => {
 							</FormItem>
 						)}
 					/>
-					<div className="flex justify-center w-full">
-						<Button size="lg" disabled={isLoading} className="cursor-pointer">
+					<div className='flex w-full justify-center'>
+						<Button size='lg' disabled={isLoading} className='cursor-pointer'>
 							{initialData ? 'Edit your companion' : 'Create your companion'}
 
-							<Wand2Icon className="size-4 ml-2" />
+							<Wand2Icon className='ml-2 size-4' />
 						</Button>
 					</div>
 				</form>

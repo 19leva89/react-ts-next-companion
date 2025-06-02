@@ -28,10 +28,10 @@ export const ChatMessage = ({ role, content, isLoading, src }: ChatMessageProps)
 	}
 
 	return (
-		<div className={cn('group flex items-start gap-x-3 w-full py-4', role === 'user' && 'justify-end')}>
+		<div className={cn('group flex w-full items-start gap-x-3 py-4', role === 'user' && 'justify-end')}>
 			{role !== 'user' && src && <BotAvatar src={src} />}
 
-			<div className="max-w-sm px-4 py-2 rounded-md text-sm bg-primary/10">
+			<div className='max-w-sm rounded-md bg-primary/10 px-4 py-2 text-sm'>
 				{isLoading ? <BeatLoader size={5} color={theme === 'light' ? 'black' : 'white'} /> : content}
 			</div>
 
@@ -39,12 +39,12 @@ export const ChatMessage = ({ role, content, isLoading, src }: ChatMessageProps)
 
 			{role !== 'user' && (
 				<Button
-					variant="ghost"
-					size="icon"
+					variant='ghost'
+					size='icon'
 					onClick={onCopy}
-					className="opacity-0 cursor-pointer group-hover:opacity-100 transition"
+					className='cursor-pointer opacity-0 transition group-hover:opacity-100'
 				>
-					<CopyIcon className="size-4" />
+					<CopyIcon className='size-4' />
 				</Button>
 			)}
 		</div>

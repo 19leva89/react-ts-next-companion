@@ -20,14 +20,14 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
 	return (
 		<ClerkProvider>
-			<html lang="en" suppressHydrationWarning>
+			<html lang='en' suppressHydrationWarning>
 				<body className={cn('bg-secondary', inter.className)}>
-					<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+					<ThemeProvider attribute='class' defaultTheme='system' enableSystem>
 						<ProModal />
 
 						{children}
 
-						<Toaster position="bottom-right" expand={false} />
+						<Toaster position='bottom-right' expand={false} />
 					</ThemeProvider>
 				</body>
 			</html>

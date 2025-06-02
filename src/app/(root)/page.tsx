@@ -31,7 +31,7 @@ const RootPage = async ({ searchParams }: Props) => {
 	const categories = await prisma.category.findMany()
 
 	return (
-		<div className="h-full p-4 space-y-2">
+		<div className='h-full space-y-2 p-4'>
 			<SearchInput />
 
 			<Categories data={categories} />

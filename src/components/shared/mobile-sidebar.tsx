@@ -10,14 +10,14 @@ interface Props {
 export const MobileSidebar = ({ isPro }: Props) => {
 	return (
 		<Sheet>
-			<SheetTrigger className="cursor-pointer md:hidden">
+			<SheetTrigger className='cursor-pointer md:hidden'>
 				<MenuIcon />
 			</SheetTrigger>
 
-			<SheetContent side="left" className="w-32 p-0 pt-10 bg-secondary" aria-describedby={undefined}>
-				<SheetTitle className="hidden" />
+			<SheetContent side='left' className='w-32 bg-secondary p-0 pt-10' aria-describedby={undefined}>
+				<SheetTitle className='hidden' />
 
-				<SheetDescription className="hidden" />
+				<SheetDescription className='hidden' />
 
 				<Sidebar isPro={isPro} />
 			</SheetContent>

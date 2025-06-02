@@ -1,4 +1,4 @@
-This project contains the following technologies
+# This project contains the following technologies
 
 Animation and Interaction:
 - React Spinners (loading indicators)
@@ -52,16 +52,29 @@ Utilities and Libraries:
 
 
 
-To run the client and server via concurrently:
-terminal powershell -> npm run all
-terminal powershell -> npm run lint (loading ESLint checker)
-terminal powershell -> npm run knip
+# Project setup commands:
+terminal powershell -> `npm i` (install dependencies)
+terminal powershell -> `npm run all`
+terminal powershell -> `npm run lint` (loading ESLint checker)
+terminal powershell -> `npm run knip`
 
-terminal powershell -> npx prisma generate
-terminal powershell -> npx prisma db push
-terminal powershell -> npx prisma db pull
-terminal powershell -> node prisma/seed.ts (loading test DB)
-terminal powershell -> npx prisma migrate reset
+# Database commands:
+terminal powershell -> `npx prisma generate`
+terminal powershell -> `npx prisma db push`
+terminal powershell -> `npx prisma migrate reset`
 
-terminal CommandPrompt -> stripe login
-terminal CommandPrompt -> stripe listen --forward-to localhost:3000/api/webhook
+terminal powershell -> `npx prisma db seed` (loading test DB)
+
+# GitHub commands:
+terminal powershell -> `git pull origin master` (get latest changes)
+
+terminal powershell -> `git add .` (add all changes)
+terminal powershell -> `git commit -m "commit message"` (commit changes)
+terminal powershell -> `git checkout -b <branch-name>` (create new branch)
+
+terminal powershell -> `git push origin master` (push changes to master)
+terminal powershell -> `git push origin <branch-name>` (push changes to branch)
+
+# Stripe commands:
+terminal CommandPrompt -> `stripe login`
+terminal CommandPrompt -> `stripe listen --forward-to localhost:3000/api/webhook`

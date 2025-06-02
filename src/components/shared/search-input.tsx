@@ -41,10 +41,10 @@ export const SearchInput = () => {
 	}, [debouncedValue, categoryId, router])
 
 	return (
-		<div className="relative">
-			<SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+		<div className='relative'>
+			<SearchIcon className='absolute top-1/2 left-4 size-4 -translate-y-1/2 text-muted-foreground' />
 
-			<Input value={value} onChange={onChange} placeholder="Search..." className="pl-11 bg-primary/10" />
+			<Input value={value} onChange={onChange} placeholder='Search...' className='bg-primary/10 pl-11' />
 		</div>
 	)
 }

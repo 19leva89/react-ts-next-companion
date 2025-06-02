@@ -36,48 +36,48 @@ export const ChatHeader = ({ companion }: Props) => {
 	}
 
 	return (
-		<div className="flex items-center justify-between w-full pb-4 border-b border-primary/10">
-			<div className="flex gap-x-2 items-center">
-				<Button variant="ghost" size="icon" onClick={() => router.push(`/`)} className="cursor-pointer">
-					<ChevronLeftIcon className="size-8" />
+		<div className='flex w-full items-center justify-between border-b border-primary/10 pb-4'>
+			<div className='flex items-center gap-x-2'>
+				<Button variant='ghost' size='icon' onClick={() => router.push(`/`)} className='cursor-pointer'>
+					<ChevronLeftIcon className='size-8' />
 				</Button>
 
 				<BotAvatar src={companion.src} />
 
-				<div className="flex flex-col gap-y-1">
-					<div className="flex items-center gap-x-2">
-						<p className="font-bold">{companion.name}</p>
+				<div className='flex flex-col gap-y-1'>
+					<div className='flex items-center gap-x-2'>
+						<p className='font-bold'>{companion.name}</p>
 
-						<div className="flex items-center text-xs text-muted-foreground">
-							<MessagesSquareIcon className="size-3 mr-1" />
+						<div className='flex items-center text-xs text-muted-foreground'>
+							<MessagesSquareIcon className='mr-1 size-3' />
 
 							{companion._count.messages}
 						</div>
 					</div>
 
-					<p className="text-xs text-muted-foreground">Created by {companion.email}</p>
+					<p className='text-xs text-muted-foreground'>Created by {companion.email}</p>
 				</div>
 			</div>
 
 			{user?.id === companion.userId && (
 				<DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
 					<DropdownMenuTrigger asChild>
-						<Button variant="secondary" size="icon" className="cursor-pointer">
+						<Button variant='secondary' size='icon' className='cursor-pointer'>
 							<MoreVerticalIcon />
 						</Button>
 					</DropdownMenuTrigger>
 
-					<DropdownMenuContent align="end">
+					<DropdownMenuContent align='end'>
 						<DropdownMenuItem
 							onClick={() => router.push(`/companion/${companion.id}`)}
-							className="cursor-pointer"
+							className='cursor-pointer'
 						>
-							<EditIcon className="size-4 mr-2" />
+							<EditIcon className='mr-2 size-4' />
 							Edit
 						</DropdownMenuItem>
 
-						<DropdownMenuItem onSelect={handleDeleteClick} className="cursor-pointer">
-							<TrashIcon className="size-4 mr-2" />
+						<DropdownMenuItem onSelect={handleDeleteClick} className='cursor-pointer'>
+							<TrashIcon className='mr-2 size-4' />
 							Delete
 						</DropdownMenuItem>
 					</DropdownMenuContent>

@@ -25,11 +25,11 @@ export const Categories = ({ data }: Props) => {
 	}
 
 	return (
-		<div className="flex w-full space-x-2 p-1 overflow-x-auto">
+		<div className='flex w-full space-x-2 overflow-x-auto p-1'>
 			<button
 				onClick={() => onClick(undefined)}
 				className={cn(
-					'flex items-center px-2 md:px-4 py-2 md:py-3 rounded-md text-center text-xs md:text-sm bg-primary/10 cursor-pointer hover:opacity-75 transition',
+					'flex cursor-pointer items-center rounded-md bg-primary/10 px-2 py-2 text-center text-xs transition hover:opacity-75 md:px-4 md:py-3 md:text-sm',
 					!categoryId ? 'bg-primary/25' : 'bg-primary/10',
 				)}
 			>
@@ -41,7 +41,7 @@ export const Categories = ({ data }: Props) => {
 					key={item.id}
 					onClick={() => onClick(item.id)}
 					className={cn(
-						'flex items-center px-2 md:px-4 py-2 md:py-3 rounded-md text-center text-xs md:text-sm bg-primary/10 cursor-pointer hover:opacity-75 transition',
+						'flex cursor-pointer items-center rounded-md bg-primary/10 px-2 py-2 text-center text-xs transition hover:opacity-75 md:px-4 md:py-3 md:text-sm',
 						item.id === categoryId ? 'bg-primary/25' : 'bg-primary/10',
 					)}
 				>

@@ -6,8 +6,8 @@ export const UserAvatar = () => {
 	const { user } = useUser()
 
 	return (
-		<Avatar className="size-12">
-			<AvatarImage src={user?.imageUrl} className="size-12" />
+		<Avatar className='size-12'>
+			<AvatarImage src={user?.imageUrl} className='size-12' />
 		</Avatar>
 	)
 }

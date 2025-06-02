@@ -31,9 +31,9 @@ export const ChatMessages = ({ companion, isLoading, messages }: Props) => {
 	}, [messages.length])
 
 	return (
-		<div className="flex-1 pr-4 overflow-y-auto">
+		<div className='flex-1 overflow-y-auto pr-4'>
 			<ChatMessage
-				role="system"
+				role='system'
 				src={companion.src}
 				content={`Hello, I'm ${companion.name}, ${companion.description}.`}
 				isLoading={fakeLoading}
@@ -48,7 +48,7 @@ export const ChatMessages = ({ companion, isLoading, messages }: Props) => {
 				/>
 			))}
 
-			{isLoading && <ChatMessage role="system" src={companion.src} isLoading />}
+			{isLoading && <ChatMessage role='system' src={companion.src} isLoading />}
 
 			<div ref={scrollRef} />
 		</div>
