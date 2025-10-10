@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 import { ClerkProvider } from '@clerk/nextjs'
+import { Analytics } from '@vercel/analytics/next'
 
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui'
@@ -29,6 +30,9 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 
 						<Toaster position='bottom-right' expand={false} />
 					</ThemeProvider>
+
+					{/* Allow track page views for Vercel */}
+					<Analytics />
 				</body>
 			</html>
 		</ClerkProvider>

@@ -115,7 +115,7 @@ export async function POST(request: NextRequest, { params }: IParams) {
 		saveCompletion().catch(console.error)
 
 		// Return the text stream directly
-		return result.toDataStreamResponse()
+		return result.toTextStreamResponse()
 	} catch (error) {
 		console.error('[CHAT_POST_ERROR]', error)
 

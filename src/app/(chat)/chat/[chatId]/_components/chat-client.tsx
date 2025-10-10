@@ -46,12 +46,6 @@ export const ChatClient = ({ companion }: Props) => {
 
 			router.refresh()
 		},
-		async onResponse(response) {
-			if (response.status !== 200) {
-				const errorData = await response.json()
-				console.error('Server Response Error:', errorData)
-			}
-		},
 	})
 
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
