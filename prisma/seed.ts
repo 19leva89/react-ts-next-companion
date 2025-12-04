@@ -1,6 +1,4 @@
-const { PrismaClient } = require('../src/generated/prisma')
-
-const prisma = new PrismaClient()
+import { prisma } from './../src/lib/prisma'
 
 async function up() {
 	await prisma.category.createMany({

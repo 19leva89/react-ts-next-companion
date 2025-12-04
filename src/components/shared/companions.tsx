@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { MessagesSquareIcon } from 'lucide-react'
 
-import { Companion } from '@/generated/prisma'
+import { Companion } from '@/generated/prisma/client'
 import { Card, CardFooter, CardHeader } from '@/components/ui'
 
 interface Props {

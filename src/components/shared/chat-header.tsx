@@ -12,8 +12,8 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '@/components/ui'
-import { Companion, Message } from '@/generated/prisma'
 import { BotAvatar, ChatDelete } from '@/components/shared'
+import { Companion, Message } from '@/generated/prisma/client'
 
 interface Props {
 	companion: Companion & {

@@ -26,8 +26,8 @@ import {
 	Textarea,
 } from '@/components/ui'
 import { ImageUpload } from '@/components/shared'
-import { Category, Companion } from '@/generated/prisma'
 import { PREAMBLE, SEED_CHAT } from '../_constants/constants'
+import { Category, Companion } from '@/generated/prisma/client'
 import { formSchema, IFormSchema } from '../_constants/form-schema'
 
 interface Props {

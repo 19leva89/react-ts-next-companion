@@ -15,11 +15,11 @@ Authentication and User Management:
 Core Technologies:
 - React 19
 - TypeScript
-- Next 15 (framework)
+- Next 16 (framework)
 
 Data Fetching and State Management:
 - Axios (sending requests to backend)
-- Prisma 6 (ORM for DB)
+- Prisma 7 (ORM for DB)
 - Zustand (state management)
 
 Form and Validation:

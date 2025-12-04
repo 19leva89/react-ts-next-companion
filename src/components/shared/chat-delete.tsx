@@ -14,7 +14,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from '@/components/ui'
-import { Companion } from '@/generated/prisma'
+import { Companion } from '@/generated/prisma/client'
 
 interface Props {
 	companion: Companion

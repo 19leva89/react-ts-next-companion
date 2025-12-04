@@ -2,7 +2,7 @@
 
 import { ComponentRef, useEffect, useRef, useState } from 'react'
 
-import { Companion } from '@/generated/prisma'
+import { Companion } from '@/generated/prisma/client'
 import { ChatMessage, ChatMessageProps } from '@/components/shared'
 
 interface Props {
