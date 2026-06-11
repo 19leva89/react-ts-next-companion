@@ -1,6 +1,5 @@
 'use client'
 
-import * as LabelPrimitive from '@radix-ui/react-label'
 import {
 	Controller,
 	FormProvider,
@@ -11,6 +10,7 @@ import {
 	type FieldValues,
 } from 'react-hook-form'
 import { Slot } from '@radix-ui/react-slot'
+import { Label as LabelPrimitive } from 'radix-ui'
 import { ComponentProps, createContext, useContext, useId } from 'react'
 
 import { cn } from '@/lib/utils'

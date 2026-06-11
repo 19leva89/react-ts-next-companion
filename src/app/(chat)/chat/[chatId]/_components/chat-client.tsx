@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { SubmitEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCompletion } from '@ai-sdk/react'
 
@@ -48,7 +48,7 @@ export const ChatClient = ({ companion }: Props) => {
 		},
 	})
 
-	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const onSubmit = (e: SubmitEvent) => {
 		const userMessage = {
 			role: 'user',
 			content: input,
